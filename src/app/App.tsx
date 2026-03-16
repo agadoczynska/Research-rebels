@@ -4,7 +4,6 @@ import { FeatureCard } from './components/feature-card';
 import { WireframePrototype } from './components/wireframe-prototype';
 import { PhaseProgress } from './components/phase-progress';
 import { VotingToolCard } from './components/voting-tool-card';
-import { Circle, Triangle, Square } from 'lucide-react';
 
 const features = [
   {

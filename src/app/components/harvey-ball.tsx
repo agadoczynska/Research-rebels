@@ -3,7 +3,8 @@ interface HarveyBallProps {
 }
 
 export function HarveyBall({ value }: HarveyBallProps) {
-  const percentage = (value / 4) * 100;
+  const clamped = Math.min(4, Math.max(0, value));
+  const percentage = (clamped / 4) * 100;
   const angle = (percentage / 100) * 360;
 
   // Create a conic gradient for pie chart effect

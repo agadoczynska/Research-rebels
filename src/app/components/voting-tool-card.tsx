@@ -16,7 +16,7 @@ export function VotingToolCard() {
         <div className="flex justify-between gap-3">
           {voteOptions.map(({ value, label, fillPercent }) => (
             <div key={value} className="flex-1">
-              <div key={value} className="flex flex-col items-center gap-1.5">
+              <div className="flex flex-col items-center gap-1.5">
                 <button
                   className="relative w-8 h-8 rounded-full border-2 hover:scale-110 transition-transform"
                   style={{ 

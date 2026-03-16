@@ -8,7 +8,7 @@ export function StateMeter() {
           Alignment Level
         </div>
         <div style={{ paddingTop: '10px' }} className="flex-1 flex flex-col">
-          <div className="relative flex-1 w-24 border-2 ml-auto mr-auto" style={{ borderColor: '#2E5284', marginLeft: 'calc(50% - 48px - 10px)' }}>
+          <div className="relative flex-1 w-24 border-2 mx-auto" style={{ borderColor: '#2E5284' }}>
             {/* Scale markers - on the right */}
             <div className="absolute top-0 left-full ml-2 text-xs font-['Space_Mono'] -translate-y-1">
               High
