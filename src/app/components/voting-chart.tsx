@@ -1,16 +1,21 @@
-interface Feature {
-  name: string;
-  distribution: { vote: number; percentage: number }[];
+interface DistributionItem {
+  vote: number;
+  percentage: number;
 }
 
-const currentFeature: Feature = {
+interface VotingChartProps {
+  featureName?: string;
+  distribution?: DistributionItem[];
+}
+
+const defaultFeature = {
   name: 'AI Campaign Idea Generator',
   distribution: [
     { vote: 1, percentage: 12 },
     { vote: 2, percentage: 19 },
     { vote: 3, percentage: 27 },
     { vote: 4, percentage: 42 },
-  ],
+  ] as DistributionItem[],
 };
 
 const voteColors = [
@@ -20,15 +25,15 @@ const voteColors = [
   'var(--tea-rose-secondary)', // Desaturated Pink for vote 4
 ];
 
-export function VotingChart() {
-  const maxPercentage = Math.max(...currentFeature.distribution.map(d => d.percentage));
+export function VotingChart({ featureName = defaultFeature.name, distribution = defaultFeature.distribution }: VotingChartProps) {
+  const maxPercentage = Math.max(1, ...distribution.map(d => d.percentage));
 
   return (
     <div className="bg-gray-200 p-4">
       <div className="space-y-4 mt-6">
         <div style={{ marginTop: '-24px' }}>
           <div className="font-['Space_Mono'] font-bold tracking-tight text-sm">
-            Current feature: {currentFeature.name}
+            Current feature: {featureName}
           </div>
           <div className="text-xs text-gray-700 mt-1">
             Auto-create campaigns from target group + trend data
@@ -39,9 +44,9 @@ export function VotingChart() {
         <div>
           {/* Blocks */}
           <div className="flex">
-            {currentFeature.distribution.map((item, index) => {
+            {distribution.map((item, index) => {
               const heightPercentage = (item.percentage / maxPercentage) * 100;
-              
+
               return (
                 <div key={item.vote} className="flex-1">
                   {/* Vertical block */}
@@ -68,7 +73,7 @@ export function VotingChart() {
           
           {/* Labels below baseline */}
           <div className="flex mt-2">
-            {currentFeature.distribution.map((item) => (
+            {distribution.map((item) => (
               <div key={item.vote} className="flex-1 text-center font-['Space_Mono'] text-xs">
                 {item.vote}/4
               </div>
